@@ -3,6 +3,7 @@ package tacocloud;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -11,10 +12,13 @@ import lombok.Data;
 public class Taco {
     private Long id;
 
-    private Date createdAt;
-
     @NotNull
     @Size(min = 5, message = "Name must be at least 5 characters long")
-    private final String name;
-    private final List<String> ingredients;
+    private String name;
+
+    private Date createdAt;
+
+    @NotEmpty
+    @Size(min = 1, message = "You must choose at least 1 ingredient")
+    private List<String> ingredients;
 }
